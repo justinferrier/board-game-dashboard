@@ -1,0 +1,16 @@
+<div class="player-card">
+    <div class="info">
+        <div class="name">{{ playerName }}</div>
+        <div class="level">
+            Level: {{ playerLevel }}
+            <button (click)="increaseLevel()">+</button>
+            <button (click)="decreaseLevel()">-</button>
+        </div>
+        <div class="bonus">
+            Bonus: {{ playerBonus }}
+            <button (click)="increaseBonus()">+</button>
+            <button (click)="decreaseBonus()">-</button>
+        </div>
+        <div class="total">Total: {{ playerTotal }}</div>
+    </div>
+</div>

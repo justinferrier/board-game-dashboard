@@ -1,0 +1,33 @@
+<div *ngIf="!gameStarted">
+    <h2>Munchkin Setup</h2>
+
+    <div *ngFor="let player of players; let i = index" class="player-row">
+        <input type="text" [(ngModel)]="player.name" placeholder="Player Name" />
+        <select [(ngModel)]="player.sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <button *ngIf="i === players.length - 1 && players.length < 6" (click)="addPlayer()" class="add-button">+</button>
+        <button *ngIf="i !== players.length - 1 || players.length === 6" (click)="removePlayer(i)" class="remove-button">x</button>
+    </div>
+
+    <label>Game Type:</label>
+    <select [(ngModel)]="selectedGameType">
+        <option value="normal">Normal (Max Level 10)</option>
+        <option value="epic">Epic (Max Level 20)</option>
+    </select>
+
+    <button (click)="startGame()" class="start-game-button">Start Game</button>
+</div>
+
+<div *ngIf="gameStarted">
+    <h2>Munchkin Stats</h2>
+    <div class="player-grid">
+        <app-player-cards *ngFor="let player of players"
+            [playerName]="player.name"
+            [playerLevel]="player.level"
+            [playerBonus]="player.bonus"
+            [playerTotal]="player.total">
+        </app-player-cards>
+    </div>
+</div>
